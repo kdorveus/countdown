@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monthly Countdown</title>
+  <style>
+    #countdown {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function updateCountdown() {
+      var now = new Date();
+      var end = new Date(now.getFullYear(), now.getMonth() + 1, 0, 0, 0, 0); // End of the current month at midnight
+
+      var days = Math.floor((end - now) / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(((end - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor(((end - now) % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor(((end - now) % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = days + " days " + hours + "h" + minutes + "min" + seconds + "s";
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</head>
+<body>
+  <div id="countdown"></div>
+</body>
+</html>
